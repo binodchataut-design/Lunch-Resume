@@ -5,16 +5,31 @@
  * SimpleResumeBuilder
  * --------------------
  * A deliberately simple rebuild of the resume builder page:
- *   - Left panel  : fill-in-the-blanks form
- *   - Right panel : live preview that updates as you type
- *   - Header      : font family, font size, and color tools
+ *   - Left panel  : fill-in-the-blanks form with sample loader
+ *   - Right panel : live preview using template system
+ *   - Header      : template picker, font family, font size, and color tools
  */
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Plus, Trash2, Type, Palette, Download, ChevronDown, GripVertical, ArrowLeft
+  Plus, Trash2, Type, Palette, Download, ChevronDown, GripVertical, ArrowLeft, Layout, Sparkles
 } from 'lucide-react';
+import resumeExamples from '../../content/resumeExamples.json';
+import {
+  templateMetadata,
+  ExecutiveElite,
+  CorporatePro,
+  FinanceAuthority,
+  HealthcareProfessional,
+  LegalProfessional,
+  EducationLeader,
+  GovernmentProfessional,
+  ModernTech,
+  CreativeEdge,
+  PersonalBrand,
+} from '../templates';
+import type { ResumeDesign } from '../types/design';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -75,6 +90,19 @@ const FONT_LABEL: Record<FontChoice, string> = {
   space: 'Space Grotesk',
 };
 
+const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  'executive-elite': ExecutiveElite,
+  'corporate-pro': CorporatePro,
+  'finance-authority': FinanceAuthority,
+  'healthcare-professional': HealthcareProfessional,
+  'legal-professional': LegalProfessional,
+  'education-leader': EducationLeader,
+  'government-professional': GovernmentProfessional,
+  'modern-tech': ModernTech,
+  'creative-edge': CreativeEdge,
+  'personal-brand': PersonalBrand,
+};
+
 // ---------------------------------------------------------------------------
 // Defaults
 // ---------------------------------------------------------------------------
@@ -97,7 +125,7 @@ const DEFAULT_DESIGN: DesignConfig = {
 const uid = (prefix: string) => `${prefix}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
 // ---------------------------------------------------------------------------
-// Small form primitives (kept local so the file stays self-contained)
+// Small form primitives
 // ---------------------------------------------------------------------------
 
 const Field: React.FC<{
@@ -147,7 +175,7 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode; onAdd?: 
       {onAdd && (
         <button
           onClick={onAdd}
-          className="flex items-center gap-1 text-[11px] font-semibold text-teal-700 hover:text-teal-800"
+          className="flex items-center gap-1 text-[11px] font-semibold text-teal-700 hover:text-teal-800 cursor-pointer"
         >
           <Plus size={13} /> {addLabel || 'Add'}
         </button>
@@ -165,6 +193,9 @@ export const SimpleResumeBuilder: React.FC = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<ResumeData>(EMPTY_DATA);
   const [design, setDesign] = useState<DesignConfig>(DEFAULT_DESIGN);
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>(
+    templateMetadata[0]?.id || 'executive-elite'
+  );
   const [skillInput, setSkillInput] = useState('');
 
   // --- personal info -------------------------------------------------------
@@ -221,7 +252,166 @@ export const SimpleResumeBuilder: React.FC = () => {
   const setDesignField = <K extends keyof DesignConfig>(field: K, value: DesignConfig[K]) =>
     setDesign((prev) => ({ ...prev, [field]: value }));
 
+  // --- sample resume loader ------------------------------------------------
+  const handleLoadSample = (sample: typeof resumeExamples[0]) => {
+    const hasExistingContent = Boolean(
+      data.summary.trim() || data.experiences.length > 0
+    );
+    if (hasExistingContent) {
+      const confirmed = window.confirm(
+        'Loading this sample resume will overwrite your current summary, work experiences, and skills. Do you want to continue?'
+      );
+      if (!confirmed) return;
+    }
+
+    const achievementsSentence =
+      sample.keyAchievements && sample.keyAchievements.length > 0
+        ? ' ' + sample.keyAchievements.join(' ')
+        : '';
+    const fullSummary = (sample.summary || '') + achievementsSentence;
+
+    const parsedExperiences: ExperienceItem[] = (sample.sampleExperience || []).map(
+      (expStr, idx) => {
+        const match = expStr.match(/^(.*?)\s+at\s+(.*?)\s*\((.*?)\):\s*([\s\S]*)$/);
+        if (match) {
+          return {
+            id: uid(`exp-sample-${idx}`),
+            role: match[1].trim(),
+            company: match[2].trim(),
+            period: match[3].trim(),
+            description: match[4].trim(),
+          };
+        }
+        return {
+          id: uid(`exp-sample-${idx}`),
+          role: '',
+          company: '',
+          period: '',
+          description: expStr.trim(),
+        };
+      }
+    );
+
+    setData((prev) => ({
+      ...prev,
+      personalInfo: {
+        ...prev.personalInfo,
+        title: sample.jobTitle,
+      },
+      summary: fullSummary,
+      experiences: parsedExperiences,
+      skills: [...sample.sampleSkills],
+    }));
+  };
+
+  // --- mapped data & design for template components ------------------------
   const p = data.personalInfo;
+
+  const mappedData = {
+    personalInfo: {
+      fullName: p.fullName || 'Your Name',
+      title: p.title || 'Professional Title',
+      email: p.email || '',
+      phone: p.phone || '',
+      location: p.location || '',
+      website: p.website || '',
+      linkedin: p.website || '',
+    },
+    summary: data.summary || '',
+    experience: data.experiences.map((exp) => {
+      const lines = exp.description
+        ? exp.description
+            .split('\n')
+            .map((l) => l.replace(/^[•\-\*]\s*/, '').trim())
+            .filter(Boolean)
+        : [];
+      const highlights = lines.length > 0 ? lines : (exp.description ? [exp.description] : []);
+
+      return {
+        id: exp.id,
+        title: exp.role || 'Role',
+        role: exp.role || 'Role',
+        company: exp.company || '',
+        period: exp.period || '',
+        startDate: exp.period || '',
+        endDate: '',
+        current: exp.period ? exp.period.toLowerCase().includes('present') : false,
+        location: '',
+        description: exp.description || '',
+        highlights,
+      };
+    }),
+    experiences: data.experiences,
+    education: data.educations.map((edu) => ({
+      id: edu.id,
+      school: edu.school || 'School / University',
+      institution: edu.school || 'School / University',
+      degree: edu.degree || 'Degree',
+      field: '',
+      period: edu.period || '',
+      graduationDate: edu.period || '',
+      location: '',
+      honors: [],
+    })),
+    educations: data.educations,
+    skills: data.skills.map((skill, idx) => ({
+      id: `skill-${idx}`,
+      name: skill,
+      level: 'advanced',
+      toString: () => skill,
+    })),
+    certifications: [],
+    projects: [],
+    achievements: [],
+    languages: [],
+    memberships: [],
+    volunteer: [],
+    references: [],
+  };
+
+  const mappedDesign: ResumeDesign = {
+    template: selectedTemplateId,
+    primaryColor: design.accentColor,
+    secondaryColor: '#475569',
+    background: '#ffffff',
+    fontHeading: design.font,
+    fontBody: design.font,
+    fontName: design.font,
+    fontSize: design.fontSize,
+    bodySize: design.fontSize,
+    headingSize: design.fontSize + 4,
+    nameSize: design.fontSize + 14,
+    lineHeight: 1.5,
+    pageMargin: 0.75,
+    sectionSpacing: 16,
+    paragraphSpacing: 8,
+    bulletSpacing: 4,
+    layout: 'single',
+    headerStyle: 'left',
+    photoShape: 'circle',
+    iconStyle: 'visible',
+    dividerStyle: 'solid',
+    borderRadius: 4,
+    density: 'comfortable',
+    paperSize: 'letter',
+    accentColor: design.accentColor,
+    headingColor: design.accentColor,
+    bodyTextColor: design.textColor,
+    dividerColor: design.accentColor,
+    sidebarColor: '#0f172a',
+    timelineColor: design.accentColor,
+    bulletColor: design.accentColor,
+    linkColor: design.accentColor,
+    skillChipColor: design.accentColor,
+    sectionLabelColor: design.accentColor,
+  };
+
+  const SelectedTemplateComponent =
+    TEMPLATE_COMPONENTS[selectedTemplateId] ||
+    TEMPLATE_COMPONENTS['executive-elite'] ||
+    ExecutiveElite;
+
+  const TemplateRenderer = SelectedTemplateComponent as React.ComponentType<any>;
 
   return (
     <div className="w-full h-screen bg-[#FAFAF9] text-stone-900 flex flex-col overflow-hidden">
@@ -255,7 +445,26 @@ export const SimpleResumeBuilder: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3.5">
+          {/* Template selector */}
+          <div className="flex items-center gap-1.5">
+            <Layout size={14} className="text-stone-400" />
+            <div className="relative">
+              <select
+                value={selectedTemplateId}
+                onChange={(e) => setSelectedTemplateId(e.target.value)}
+                className="appearance-none text-xs font-semibold pl-2 pr-6 py-1.5 bg-stone-50 border border-stone-200 rounded-lg outline-none cursor-pointer focus:border-teal-600 text-stone-800"
+              >
+                {templateMetadata.map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.name} ({t.category.charAt(0).toUpperCase() + t.category.slice(1)})
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" />
+            </div>
+          </div>
+
           {/* Font family */}
           <div className="flex items-center gap-1.5">
             <Type size={14} className="text-stone-400" />
@@ -323,6 +532,43 @@ export const SimpleResumeBuilder: React.FC = () => {
       <div className="flex-1 flex overflow-hidden">
         {/* LEFT — form */}
         <div className="no-print w-full md:w-[46%] lg:w-[42%] overflow-y-auto border-r border-stone-200 bg-[#FAFAF9] p-6 space-y-5">
+          {/* Start from a Sample Resume */}
+          <div className="bg-white border border-stone-200 rounded-xl p-4 space-y-2.5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Sparkles size={14} className="text-teal-600" />
+                <h3 className="text-xs font-bold text-stone-700 uppercase tracking-wide">
+                  Start from a Sample Resume
+                </h3>
+              </div>
+              <span className="text-[10px] text-stone-400 font-medium">Auto-fill content</span>
+            </div>
+            <p className="text-[11px] text-stone-500">
+              Select an example to populate job title, summary, work experiences, and skills.
+            </p>
+            <div className="relative">
+              <select
+                defaultValue=""
+                onChange={(e) => {
+                  const slug = e.target.value;
+                  if (!slug) return;
+                  const sample = resumeExamples.find((ex) => ex.slug === slug);
+                  if (sample) handleLoadSample(sample);
+                  e.target.value = '';
+                }}
+                className="w-full text-xs font-medium pl-3 pr-8 py-2 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-teal-600 cursor-pointer appearance-none text-stone-700"
+              >
+                <option value="">Choose a sample resume role...</option>
+                {resumeExamples.map((ex) => (
+                  <option key={ex.slug} value={ex.slug}>
+                    {ex.jobTitle} — {ex.industry}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none" />
+            </div>
+          </div>
+
           <SectionCard title="Personal Info">
             <div className="grid grid-cols-2 gap-3">
               <div className="col-span-2">
@@ -359,7 +605,7 @@ export const SimpleResumeBuilder: React.FC = () => {
                     <span className="flex items-center gap-1 text-[10px] font-bold text-stone-400 uppercase">
                       <GripVertical size={11} /> Role
                     </span>
-                    <button onClick={() => removeExperience(exp.id)} className="text-stone-400 hover:text-rose-600">
+                    <button onClick={() => removeExperience(exp.id)} className="text-stone-400 hover:text-rose-600 cursor-pointer">
                       <Trash2 size={13} />
                     </button>
                   </div>
@@ -388,7 +634,7 @@ export const SimpleResumeBuilder: React.FC = () => {
               {data.educations.map((edu) => (
                 <div key={edu.id} className="border border-stone-200 rounded-lg p-3 space-y-2 bg-stone-50/50">
                   <div className="flex justify-end">
-                    <button onClick={() => removeEducation(edu.id)} className="text-stone-400 hover:text-rose-600">
+                    <button onClick={() => removeEducation(edu.id)} className="text-stone-400 hover:text-rose-600 cursor-pointer">
                       <Trash2 size={13} />
                     </button>
                   </div>
@@ -412,7 +658,7 @@ export const SimpleResumeBuilder: React.FC = () => {
                 placeholder="Type a skill and press Enter"
                 className="flex-1 text-sm px-3 py-2 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-teal-600"
               />
-              <button onClick={addSkill} className="px-3 py-2 bg-stone-900 text-white text-xs font-bold rounded-lg hover:bg-stone-800">
+              <button onClick={addSkill} className="px-3 py-2 bg-stone-900 text-white text-xs font-bold rounded-lg hover:bg-stone-800 cursor-pointer">
                 Add
               </button>
             </div>
@@ -421,7 +667,7 @@ export const SimpleResumeBuilder: React.FC = () => {
                 {data.skills.map((sk) => (
                   <span key={sk} className="flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 bg-teal-50 text-teal-800 rounded-full">
                     {sk}
-                    <button onClick={() => removeSkill(sk)} className="hover:text-rose-600">×</button>
+                    <button onClick={() => removeSkill(sk)} className="hover:text-rose-600 cursor-pointer">×</button>
                   </span>
                 ))}
               </div>
@@ -433,76 +679,10 @@ export const SimpleResumeBuilder: React.FC = () => {
         <div className="hidden md:flex flex-1 overflow-y-auto bg-stone-100 justify-center py-10 px-6">
           <div
             id="physical-page-print"
-            className={`${FONT_CLASS[design.font]} bg-white shadow-lg w-[8.5in] min-h-[11in] p-[0.75in]`}
-            style={{ fontSize: `${design.fontSize}px`, color: design.textColor, lineHeight: 1.5 }}
+            className={`${FONT_CLASS[design.font]} bg-white shadow-lg`}
+            style={{ fontSize: `${design.fontSize}px`, color: design.textColor }}
           >
-            {/* Header */}
-            <div className="mb-6 pb-4 border-b" style={{ borderColor: design.accentColor }}>
-              <h1 className="font-bold" style={{ fontSize: `${design.fontSize + 15}px`, color: design.accentColor }}>
-                {p.fullName || 'Your Name'}
-              </h1>
-              {p.title && <p className="font-medium mt-0.5" style={{ fontSize: `${design.fontSize + 2}px` }}>{p.title}</p>}
-              <p className="text-stone-500 mt-1" style={{ fontSize: `${design.fontSize - 1.5}px` }}>
-                {[p.email, p.phone, p.location, p.website].filter(Boolean).join('   •   ')}
-              </p>
-            </div>
-
-            {/* Summary */}
-            {data.summary && (
-              <section className="mb-5">
-                <h2 className="font-bold uppercase tracking-wide mb-1.5" style={{ fontSize: `${design.fontSize + 1}px`, color: design.accentColor }}>
-                  Summary
-                </h2>
-                <p style={{ whiteSpace: 'pre-wrap' }}>{data.summary}</p>
-              </section>
-            )}
-
-            {/* Experience */}
-            {data.experiences.length > 0 && (
-              <section className="mb-5">
-                <h2 className="font-bold uppercase tracking-wide mb-2" style={{ fontSize: `${design.fontSize + 1}px`, color: design.accentColor }}>
-                  Experience
-                </h2>
-                <div className="space-y-3">
-                  {data.experiences.map((exp) => (
-                    <div key={exp.id}>
-                      <div className="flex justify-between items-baseline">
-                        <span className="font-bold">{exp.role || 'Role'} {exp.company && <span className="font-normal">— {exp.company}</span>}</span>
-                        <span className="text-stone-500" style={{ fontSize: `${design.fontSize - 1.5}px` }}>{exp.period}</span>
-                      </div>
-                      {exp.description && <p className="whitespace-pre-wrap mt-0.5">{exp.description}</p>}
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Education */}
-            {data.educations.length > 0 && (
-              <section className="mb-5">
-                <h2 className="font-bold uppercase tracking-wide mb-2" style={{ fontSize: `${design.fontSize + 1}px`, color: design.accentColor }}>
-                  Education
-                </h2>
-                <div className="space-y-2">
-                  {data.educations.map((edu) => (
-                    <div key={edu.id} className="flex justify-between items-baseline">
-                      <span><span className="font-bold">{edu.school || 'School'}</span>{edu.degree && ` — ${edu.degree}`}</span>
-                      <span className="text-stone-500" style={{ fontSize: `${design.fontSize - 1.5}px` }}>{edu.period}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Skills */}
-            {data.skills.length > 0 && (
-              <section>
-                <h2 className="font-bold uppercase tracking-wide mb-2" style={{ fontSize: `${design.fontSize + 1}px`, color: design.accentColor }}>
-                  Skills
-                </h2>
-                <p>{data.skills.join('  •  ')}</p>
-              </section>
-            )}
+            <TemplateRenderer data={mappedData} design={mappedDesign} />
           </div>
         </div>
       </div>
