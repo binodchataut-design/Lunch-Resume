@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "software-engineer",
+    "jobTitle": "Software Engineer",
+    "industry": "Technology",
+    "summary": "Detail-oriented and metrics-driven Software Engineer with 5+ years of experience designing scalable distributed systems, developing robust dynamic web architectures, and leading agile engineering teams. Proven success in optimizing cloud database performance, reducing latency by 40%, and maintaining browser-sandboxed security protocols.",
+    "sampleExperience": [
+      "Senior Software Engineer at HorizonTech (2023 - Present): Engineered real-time web engines utilizing React, TypeScript, and microservices architecture. Reduced page load times by 35% and increased core user retention.",
+      "Software Engineer at PeakSystems (2021 - 2023): Designed, tested, and shipped secure REST API endpoints using Node.js and PostgreSQL. Implemented robust automated verification systems."
+    ],
+    "sampleSkills": [
+      "React / Next.js / Vite",
+      "TypeScript & JavaScript",
+      "Node.js / Express / CJS",
+      "PostgreSQL & Firebase",
+      "Docker / Cloud Run",
+      "Git & CI/CD Pipelines"
+    ],
+    "keyAchievements": [
+      "Pioneered a client-side layout rendering engine that decreased server compute costs by 50%.",
+      "Introduced fully covered test suites, boosting overall application code coverage to 94%."
+    ],
+    "seoTitle": "ATS-Calibrated Software Engineer Resume Example | LunchResume",
+    "seoDescription": "Download or reference our free, professional Software Engineer resume example. Calibrated for modern ATS scanning platforms with metrics-focused descriptions."
+  },
+  {
+    "slug": "registered-nurse",
+    "jobTitle": "Registered Nurse",
+    "industry": "Healthcare",
+    "summary": "Compassionate and highly coordinated Registered Nurse (RN) with 4+ years of clinical experience in high-volume emergency trauma centers and critical care spaces. Dedicated to maintaining immaculate patient-advocacy standards, standardizing clinical protocols, and delivering optimal health outcomes.",
+    "sampleExperience": [
+      "Emergency Room RN at MetroHealth Clinic (2024 - Present): Provide immediate critical care assessment and triage protocols to over 40+ acute patients daily. Collaborate with physicians on rapid diagnostic strategies.",
+      "Staff Nurse at ValleyCare Hospital (2022 - 2024): Administered medication, managed comprehensive IV therapies, and tracked telemetry vitals with zero compliance incidents."
+    ],
+    "sampleSkills": [
+      "Acute Patient Triage",
+      "ECG & Telemetry Interpretation",
+      "ICU Clinical Protocols",
+      "Electronic Health Records (EHR)",
+      "Patient & Caregiver Education",
+      "BLS / ACLS Certified"
+    ],
+    "keyAchievements": [
+      "Spearheaded a nurse-led discharge coordination framework that reduced patient re-admission rates by 12%.",
+      "Received hospital-wide Clinical Excellence Award in 2025 for outstanding patient care metrics."
+    ],
+    "seoTitle": "Professional Registered Nurse (RN) Resume Example | LunchResume",
+    "seoDescription": "Access our recruiter-approved Registered Nurse resume template. Packed with critical care keywords, clinical formatting patterns, and action-oriented summaries."
+  },
+  {
+    "slug": "accountant",
+    "jobTitle": "Staff Accountant",
+    "industry": "Finance & Accounting",
+    "summary": "Certified and analytically rigorous Staff Accountant with 6+ years of expertise managing comprehensive corporate tax preparation, asset ledger reconciliation, and detailed cost variance modeling. Proficient in automated financial suites and compliant with GAAP/SOX standards.",
+    "sampleExperience": [
+      "Senior Staff Accountant at ApexLedger Corp (2023 - Present): Spearhead end-of-month and annual financial close procedures for 15+ multi-million dollar corporate client profiles.",
+      "Junior Accountant at FinTax Associates (2020 - 2023): Verified journal entries, tracked quarterly depreciation curves, and spearheaded thorough audit-readiness documentation."
+    ],
+    "sampleSkills": [
+      "GAAP & SOX Compliance",
+      "Corporate Tax Preparation",
+      "General Ledger Reconciliation",
+      "Financial Forecasting & Modeling",
+      "Advanced Microsoft Excel (VBA)",
+      "QuickBooks & SAP Systems"
+    ],
+    "keyAchievements": [
+      "Identified and rectified tax compliance discrepancies, saving corporate clients an estimated $120,000 annually.",
+      "Automated weekly ledger reconciliation sheets, cutting manual spreadsheet processing times by 8 hours per week."
+    ],
+    "seoTitle": "GAAP-Compliant Staff Accountant Resume Example | LunchResume",
+    "seoDescription": "Use our high-impact Staff Accountant resume example. Optimized for financial system software keyword screening, compliance-oriented, and fully print-ready."
+  }
+]

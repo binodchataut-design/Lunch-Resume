@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ats-secrets",
+    "title": "Algorithms Over Aesthetics: How the ATS Parsing Funnel Actually Operates",
+    "excerpt": "Most job seekers design for the human eye first, but their resumes never get scanned by a recruiter. Learn how databases index your technical tags and filter out complex column formats.",
+    "category": "ATS Calibration",
+    "readTime": "5 min read",
+    "date": "June 18, 2026",
+    "content": "The Applicant Tracking System (ATS) is not a sophisticated artificial intelligence; it is a glorified database parser. When you submit a resume, the software strips away formatting, reads text left-to-right, top-to-bottom, and crawls for matching keywords requested in the company's job posting.\n\n### The Multi-Column Fallacy\nMany graphic editors encourage candidates to build dual-column resumes. In theory, this maximizes visual balance. In practice, generic ATS parsers read columns straight across. If your left column lists a job title and your right column lists description details, the parser merges them into a single incomprehensible sentence, completely breaking your skills metadata association.\n\n### Rules for ATS Compliance:\n1. **Use Single-Column Grids:** Keep information stacked cleanly to guarantee predictable left-to-right scanning.\n2. **Avoid SVG Decorators:** Decorative progress bars or graphical skill scales are invisible to parsers, and frequently trigger extraction errors.\n3. **Integrate Exact Keywords:** Customize your subheadings to match the exact phrasing in the requirements of the job specification.\n\nKeep headers and spacing standard, avoiding unreadable overlapping layouts."
+  },
+  {
+    "id": "impact-metrics",
+    "title": "Grammar of Achievement: Replacing Passive Descriptions with Quantified Metrics",
+    "excerpt": "Avoid starting bullets with passive phrases like 'Responsible for' or 'Helped with'. Discover the STAR method to transform basic job listings into high-converting achievement metrics.",
+    "category": "Resume Engineering",
+    "readTime": "7 min read",
+    "date": "June 15, 2026",
+    "content": "Recruiters scan through hundreds of profiles every hour. They immediately filter out profiles that read like a copy-paste of a generic job description. To transition from a passive candidate to an active elite hire, every bullet point must be coengineered using precise action verbs and quantifiable results.\n\n### The Formula for High-Converting Bullets\nEvery descriptive sentence should follow this simple syntax:\n`[Strong Action Verb] + [Specific Technical Choice or Process] + [Measurable Business Metric Target]`\n\n### Passive vs. Metric-Driven Examples:\n* **Passive (0% callbacks):** 'Responsible for looking after customer payments and helping team deploy new website.'\n* **Active (32% improvement):** 'Coengineered payment routing microservices with Node.js, achieving a 32% global latency reduction that secured an additional $5M in weekly processed volumes.'\n\nFocus on speed, cost, precision, or scaling numbers is the easiest path to secure call-backs."
+  },
+  {
+    "id": "six-second-scan",
+    "title": "The Six-Second Rule: Setting Up Direct Hierarchical Scanning Paths",
+    "excerpt": "Studies show recruiters spend an average of six seconds scanning a profile before rendering a decision. Learn how typography grid lines and margins guide attention directly to your highlights.",
+    "category": "Visual Science",
+    "readTime": "4 min read",
+    "date": "May 29, 2026",
+    "content": "When a human reviewer finally opens your PDF file, you have exactly six seconds to convey key credentials: your Name, current Target Role, your 2 strongest employment tenures, and your core technical skills.\n\n### Scanning Path Design\nHuman readers naturally follow an 'F-shaped' visual hierarchy. They scan the top header block first, then trace down the left border margin, scanning the beginning of your professional roles. Here is how our presets are built to leverage this:\n\n* **Primary Heading:** Rendered in elegant serif or high-contrast modern sans to instantly lock user attention on name and identity.\n* **Generous White Space:** Maintaining an 18-24px visual padding is crucial. Cramming too much text into narrow margins causes visual fatigue, forcing the reader to click away early.\n* **Skill Tagging Block:** Placed in simple tables or separated by elegant delimiters so they can be instantly parsed in under 1 second."
+  }
+]

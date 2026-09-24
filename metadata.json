@@ -1,0 +1,6 @@
+{
+  "name": "LunchResume",
+  "description": "A free, elegant, ATS-calibrated resume and cover letter builder to craft highly optimized professional credentials over lunch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

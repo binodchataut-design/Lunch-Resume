@@ -1,0 +1,23 @@
+{
+  "name": "lunchresume",
+  "nameSuffix": "resume",
+  "logoAcronym": "LR",
+  "noPaywallsBadge": "✨ NO SIGN-UPS • NO PAYWALLS • 100% FREE",
+  "tagline": "Craft a professional resume over lunch.",
+  "subheading": "A free, open-source, ATS-calibrated resume builder. Create, customize templates, inject premium bullet metrics, and print flawless PDFs in under 15 minutes.",
+  "links": {
+    "templates": "Templates",
+    "builder": "Resume Builder",
+    "coverletter": "Cover Letter",
+    "blogs": "Blogs",
+    "login": "Log in",
+    "cta": "Create My Resume"
+  },
+  "footer": {
+    "title": "LUNCH",
+    "titleColored": "RESUME",
+    "description": "Elevate your career credentials over lunch. Clear layouts, metric outcomes, zero costs.",
+    "sandboxedLabel": "Browser Sandboxed Security Certified",
+    "copyright": "© 2026 LunchResume. Built for lunchresume.com. All Rights Reserved."
+  }
+}

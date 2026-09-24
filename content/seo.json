@@ -1,0 +1,27 @@
+{
+  "home": {
+    "title": "LunchResume | Free ATS-Calibrated Resume Builder",
+    "description": "Craft an ATS-optimized professional resume or cover letter inside 15 minutes. 100% free, browser-sandboxed security, zero signup required.",
+    "canonical": "https://lunchresume.com/"
+  },
+  "resumeBuilder": {
+    "title": "Resume Builder Sandbox | LunchResume",
+    "description": "Our interactive resume maker is designed to help you construct fully ATS-parseable resumes. Instantly fill templates, customize colors, and secure high recruiter callback rates.",
+    "canonical": "https://lunchresume.com/resume-builder"
+  },
+  "coverLetterBuilder": {
+    "title": "Cover Letter Workspace | LunchResume",
+    "description": "Generate and customize high-impact cover letters aligned to your resume metrics. Outcomes-focused design, print-calibrated, and fully browser-secured.",
+    "canonical": "https://lunchresume.com/cover-letter-builder"
+  },
+  "blog": {
+    "title": "Recruiter Insights & Guides | LunchResume",
+    "description": "Read actionable strategies on bypassing standard ATS algorithm filters, structuring numbers-backed career achievements, and mastering the 6-second resume glance.",
+    "canonical": "https://lunchresume.com/blog"
+  },
+  "default": {
+    "title": "LunchResume | Free ATS-Calibrated Resume Builder",
+    "description": "Craft an ATS-optimized professional resume or cover letter inside 15 minutes. 100% free, browser-sandboxed security, zero signup required.",
+    "canonical": "https://lunchresume.com/"
+  }
+}

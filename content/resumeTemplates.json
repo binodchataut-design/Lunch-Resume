@@ -1,0 +1,6 @@
+[
+  { "key": "classic", "label": "Classic Executive" },
+  { "key": "minimalist", "label": "Minimalist Slate" },
+  { "key": "creative", "label": "Creative Canvas" },
+  { "key": "modern", "label": "Tech Pro" }
+]

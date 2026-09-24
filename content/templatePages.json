@@ -1,0 +1,192 @@
+[
+  {
+    "slug": "executive-elite",
+    "templateName": "Executive Elite",
+    "bestFor": "CEOs, CFOs, Directors, Vice Presidents, and Senior C-Suite Executives",
+    "description": "The Executive Elite template is a time-tested, serif-driven design tailored for senior leadership and corporate administration. It features a distinguished centered header, strict margins, and a single-column layout optimized to display comprehensive tenures and board-level achievements.",
+    "strengths": [
+      "Distinguished serif typography (Garamond/Georgia feel) that commands executive authority.",
+      "Symmetric, clean centered header block with high scannability for multi-tenure roles.",
+      "Strict single-column ATS-friendly structural grid ensuring flawless semantic parsing."
+    ],
+    "recommendedIndustries": [
+      "C-Suite Leadership & Executive Operations",
+      "Corporate Finance & Investment Banking",
+      "Non-Profit & Board Administration",
+      "Management Consulting & Advisory"
+    ],
+    "seoTitle": "ATS-Optimized Executive Elite Resume Template | LunchResume",
+    "seoDescription": "Build a board-ready executive profile with our Executive Elite template. Fully ATS-compliant, centering your legal and leadership achievements."
+  },
+  {
+    "slug": "corporate-pro",
+    "templateName": "Corporate Pro",
+    "bestFor": "Project Managers, Operations Directors, and Program Leads",
+    "description": "Corporate Pro is a modern sans-serif template engineered for fast scanning in competitive environments. With structured accent bars, distinct skill-level layouts, and highlighted project capsules, it helps project and operations specialists showcase impact, metrics, and cross-functional leadership.",
+    "strengths": [
+      "Modern sans-serif type pairing (Inter/Outfit) with clean vertical dividing rules.",
+      "Featured project callout blocks that highlight specific delivery milestones.",
+      "Skill level bar charts to showcase functional mastery of methodologies and platforms."
+    ],
+    "recommendedIndustries": [
+      "Program & Project Management",
+      "Corporate Operations & Supply Chain",
+      "Business Intelligence & Analytics",
+      "Commercial Property & Asset Management"
+    ],
+    "seoTitle": "Professional Corporate Pro Resume Template | LunchResume",
+    "seoDescription": "Elevate your corporate application with the Corporate Pro layout. Perfect for project managers and operations leaders seeking clean organization."
+  },
+  {
+    "slug": "finance-authority",
+    "templateName": "Finance Authority",
+    "bestFor": "Accountants, Financial Analysts, Auditors, and Portfolio Managers",
+    "description": "The Finance Authority template is designed specifically for financial services, accounting firms, and auditing departments. Utilizing a beautiful mint or emerald accent palette, it organizes complex numeric achievements, asset portfolios, and regulatory compliance milestones into a pristine, high-density timeline.",
+    "strengths": [
+      "Timeline-style experience layout that emphasizes steady chronological career growth.",
+      "Highly structured competency grid for standard frameworks (GAAP, IFRS, SOX).",
+      "Clean accent color highlights that draw immediate attention to key quantitative wins."
+    ],
+    "recommendedIndustries": [
+      "Public Accounting (CPA) & Tax Advisory",
+      "Equity Research & Financial Analysis",
+      "Corporate Risk Compliance & Audit",
+      "Wealth Management & Treasury"
+    ],
+    "seoTitle": "ATS-Calibrated Finance Authority Resume Template | LunchResume",
+    "seoDescription": "A professional resume template tailored for accountants and financial analysts. Stand out with timeline layouts and emerald accents."
+  },
+  {
+    "slug": "healthcare-professional",
+    "templateName": "Healthcare Professional",
+    "bestFor": "Doctors, Registered Nurses, Clinicians, and Hospital Administrators",
+    "description": "The Healthcare Professional template is built for clinical, medical, and public health settings. It emphasizes certifications, medical credentials, and licensing boards first, placing them in a highly visible sub-header block. The layout balances clinical shift work with strategic hospital administration programs.",
+    "strengths": [
+      "Dedicated high-impact header section for medical licenses, board certifications, and state registry IDs.",
+      "Clinically optimized experience blocks that split shift duties from quantitative hospital achievements.",
+      "Teal-accented medical styling that conveys absolute trust, cleanliness, and professionalism."
+    ],
+    "recommendedIndustries": [
+      "Clinical Medicine & Surgery",
+      "Nursing & Patient Care Operations",
+      "Public Health Policy & Clinical Research",
+      "Hospital Administration & Medical Billing"
+    ],
+    "seoTitle": "Clinical Healthcare Professional Resume Template | LunchResume",
+    "seoDescription": "Highlight your medical certifications and clinical achievements with this trust-focused template designed for doctors, nurses, and medical officers."
+  },
+  {
+    "slug": "legal-professional",
+    "templateName": "Lawyers, Attorneys, Compliance Officers, and Corporate Counsels",
+    "bestFor": "Legal Practice, Corporate Governance, and Compliance Officers",
+    "description": "Our Legal Professional template uses formal serif typography and traditional margins designed to meet strict law firm partner standards. It places bar admissions, judicial clerkships, published articles, and pro bono service in prominent dedicated regions, making it perfect for legal practitioners.",
+    "strengths": [
+      "Formal serif design adhering to strict guidelines set by elite legal partnerships.",
+      "Dedicated section architecture for state bar certifications and court admissions.",
+      "Chronological experience fields prioritizing client representations and trial cases."
+    ],
+    "recommendedIndustries": [
+      "Private Practice & Law Firm Representation",
+      "Corporate Counsel & Legal Operations",
+      "Compliance, Regulatory Affairs, & Auditing",
+      "Judiciary Clerkships & Legal Advocacy"
+    ],
+    "seoTitle": "Formal Legal Professional Resume Template | LunchResume",
+    "seoDescription": "A pristine legal resume format matching top-tier law firm expectations. Features sections for state bars, clerkships, and publications."
+  },
+  {
+    "slug": "education-leader",
+    "templateName": "Education Leader",
+    "bestFor": "Teachers, Professors, School Principals, and Academic Researchers",
+    "description": "The Education Leader template organizes teaching methodologies, academic research, and pedagogical qualifications into a warm, engaging layout. It features specialized blocks for professional affiliations, curriculum development, and parent-student community outreach records.",
+    "strengths": [
+      "Curriculum design highlights that put teaching certifications and grade achievements first.",
+      "Affiliation columns to detail academic research, fellowships, and published books.",
+      "Clean, warm structural typography that represents leadership in education settings."
+    ],
+    "recommendedIndustries": [
+      "K-12 Teaching & Special Education",
+      "Higher Education, Faculty, & Adjunct lecturing",
+      "Curriculum Design & Educational Tech",
+      "School Administration & Principal offices"
+    ],
+    "seoTitle": "Academic Education Leader Resume Template | LunchResume",
+    "seoDescription": "Stand out as an educator or academic researcher. Features specialized blocks for curriculum development, teaching records, and fellowships."
+  },
+  {
+    "slug": "government-professional",
+    "templateName": "Government Professional",
+    "bestFor": "Federal Officers, Policy Analysts, and Public Sector Directors",
+    "description": "Built for federal, state, and local public sector applications, the Government Professional template utilizes a highly formal single-column matrix. It emphasizes program administration budgets, inter-agency partnerships, regulatory compliance, and language proficiencies necessary for civil service.",
+    "strengths": [
+      "Highly formal, structured layout complying with federal resume parser guidelines.",
+      "Dedicated multi-language block detailing oral and written proficiency scales.",
+      "Prominent program highlights and policy implementation metrics panels."
+    ],
+    "recommendedIndustries": [
+      "Federal & Civil Service Careers",
+      "Public Policy, Legislative, & Diplomatic affairs",
+      "Municipal Operations & City Planning",
+      "Development Sector, UN, & NGO Operations"
+    ],
+    "seoTitle": "Federal Government Professional Resume Template | LunchResume",
+    "seoDescription": "A formal, parser-compliant government resume template. Highly optimized for civil service, public policy, and federal agency applications."
+  },
+  {
+    "slug": "modern-tech",
+    "templateName": "Modern Tech",
+    "bestFor": "Software Engineers, Data Scientists, and DevOps Engineers",
+    "description": "The Modern Tech template is an asymmetric, dual-column design engineered for digital pioneers. Combining a dark, technical sidebar with skill proficiency meters and highlighted Git/portfolio badges, it's perfect for software developers, system architects, and technical project leads.",
+    "strengths": [
+      "High-contrast dark sidebar holding contact info, tech skills, and academic degrees.",
+      "Dynamic technical skill sliders representing experience levels across stacks.",
+      "Sleek visual styling that integrates GitHub, LinkedIn, and personal portfolio links."
+    ],
+    "recommendedIndustries": [
+      "Software Development & Full-Stack Engineering",
+      "Data Science, Machine Learning, & AI Research",
+      "Cloud Infrastructure, DevOps, & SysAdmin",
+      "Product Management & UX Architecture"
+    ],
+    "seoTitle": "Modern Tech Sidebar Resume Template with Photo | LunchResume",
+    "seoDescription": "Sleek asymmetric tech resume template. Features a technical skill indicator sidebar, featured projects panel, and profile photo support."
+  },
+  {
+    "slug": "creative-edge",
+    "templateName": "Creative Edge",
+    "bestFor": "UI/UX Designers, Art Directors, and Brand Strategists",
+    "description": "Creative Edge is a vibrant, modern layout built for industries where visual style, personal branding, and unique design footprints are key. Featuring a soft gradient background sidebar, structured portfolio highlights, and profile photo support, it represents the absolute vanguard of resume aesthetics.",
+    "strengths": [
+      "Vibrant gradient sidebar that makes a highly memorable aesthetic statement.",
+      "Asymmetric two-column division allowing quick structural shifts in attention.",
+      "Optimized layout for design awards, speaking engagements, and creative portfolios."
+    ],
+    "recommendedIndustries": [
+      "UI/UX Design, Product Design, & Figma Prototyping",
+      "Art Direction & Branding Strategy",
+      "Social Media Marketing & Ad Copywriting",
+      "Creative Consulting & Media Production"
+    ],
+    "seoTitle": "Creative Edge Asymmetric Resume Template | LunchResume",
+    "seoDescription": "Stand out in design and marketing. Premium asymmetric layout featuring gradient accents, creative awards showcases, and photo support."
+  },
+  {
+    "slug": "personal-brand",
+    "templateName": "Personal Brand",
+    "bestFor": "Independent Consultants, Freelancers, Advisory Specialists, and Entrepreneurs",
+    "description": "The Personal Brand template uses a multi-column, premium magazine-style grid to position your personal brand as a high-value industry consultant. It has a bold greeting hero section, dynamic expertise tag bubbles, and highlights core achievements, client results, and credentials.",
+    "strengths": [
+      "Stunning full-width bold hero greeting and title block.",
+      "Modern chip tags to represent fields of consulting expertise and industry focus.",
+      "Three-column card layout to group publications, key advisory clients, and milestones."
+    ],
+    "recommendedIndustries": [
+      "Management Consulting & Executive Coaching",
+      "Startup Advising, VC, & Angel Investing",
+      "Freelance Development & Creative Practice",
+      "Subject Matter Expert (SME) & Advisory Roles"
+    ],
+    "seoTitle": "Premium Personal Brand Resume Template | LunchResume",
+    "seoDescription": "Position yourself as an elite consultant with the Personal Brand layout. Magazine-style grid optimized to showcase client results and expertise."
+  }
+]

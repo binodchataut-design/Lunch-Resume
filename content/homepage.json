@@ -1,0 +1,142 @@
+{
+  "hero": {
+    "badge": "✨ NO SIGN-UPS • NO PAYWALLS • 100% FREE",
+    "title": "Craft a professional \nresume over lunch.",
+    "subtitle": "A free, open-source, ATS-calibrated resume builder. Create, customize templates, inject premium bullet metrics, and print flawless PDFs in under 15 minutes.",
+    "primaryActionLabel": "Open Builder Sandbox",
+    "secondaryActionLabel": "Explore AI Optimizer",
+    "scrollIndicator": "CANDIDATE UTILITY"
+  },
+  "utility": {
+    "badge": "🛡️ CANDIDATE-FIRST MANIFESTO",
+    "title": "A true candidate utility",
+    "subtitle": "Built strictly to sidestep resume game-playing",
+    "pillars": [
+      {
+        "id": "pillar-zero-logins",
+        "title": "Zero Logins Requested",
+        "description": "We never collect your phone number, email list or logins. Your work records remain privately inside your client browser.",
+        "badge": "TYPE PRESET",
+        "typePreset": "Inter Sans",
+        "icon": "Lock"
+      },
+      {
+        "id": "pillar-unlimited-pdfs",
+        "title": "Unlimited Free PDFs",
+        "description": "No locked templates or paywalls at checkout. Export clean recruiter-grade layouts instantly without generic system watermarks.",
+        "badge": "TYPE PRESET",
+        "typePreset": "EB Garamond",
+        "icon": "FileText"
+      },
+      {
+        "id": "pillar-ats-verified",
+        "title": "ATS Match-Verified",
+        "description": "Our single-column layout structures strictly avoid parser-breaking elements (complex canvas widgets, side columns, text boxes).",
+        "badge": "TYPE PRESET",
+        "typePreset": "Space Grotesk",
+        "icon": "ShieldCheck"
+      },
+      {
+        "id": "pillar-google-xyz",
+        "title": "Google XYZ AI Tuning",
+        "description": "We proxy secure server-side calls utilizing Gemini to review metric-oriented achievements, replacing weak logs with strong output ratios.",
+        "badge": "TYPE PRESET",
+        "typePreset": "Outfit Modern",
+        "icon": "Sparkles"
+      }
+    ]
+  },
+  "targetFormats": {
+    "badge": "FLEXIBLE LAYOUTS FOR ALL EXPERIENCE LIMITS",
+    "title": "Select your layout target format",
+    "subtitle": "Losing recruiter attention via broken second-page overflows is a critical failure. Pre-select a custom layout optimized explicitly for your level of professional duration:",
+    "layouts": [
+      {
+        "key": "1-page",
+        "tier": "ENTRY & MID LEVEL",
+        "title": "1-Pager Resume Templates",
+        "description": "Strictly configured layout template to fit your education and initial tenures safely onto one high-density page. Auto-compact spacing prevents accidental white breaks and watermarks, keeping recruiters visually focused on core merits. Best for under 5 years experience.",
+        "buttonText": "Choose 1-Pager Templates"
+      },
+      {
+        "key": "2-page",
+        "tier": "SENIOR & LEADERSHIP",
+        "title": "2-Pager Resume Templates",
+        "description": "Engineered for profiles with extensive work records (5+ years). Automatically sets up spacing constraints, visual page division fold markers, and balanced alignment elements so your second page printed results look pristine and highly calibrated.",
+        "buttonText": "Choose 2-Pager Templates"
+      }
+    ]
+  },
+  "roadmap": {
+    "badge": "⏱️ 15-MINUTE EXPORT",
+    "title": "Fast recruiter setup",
+    "subtitle": "How to build, calibrate, and export in 3 steps",
+    "steps": [
+      {
+        "stepNumber": "01",
+        "boldNumber": "1",
+        "title": "Select your template",
+        "description": "Pick from our validated, ATS-vetted designs. Switch between lookups at any stage without losing a single character."
+      },
+      {
+        "stepNumber": "02",
+        "boldNumber": "2",
+        "title": "Fill up experience bullets",
+        "description": "Input your work history, skills, and details. Prefill with standard developer or marketer examples on a single click."
+      },
+      {
+        "stepNumber": "03",
+        "boldNumber": "3",
+        "title": "Run critique and download",
+        "description": "Generate instant layout preview to test, then hit Export to generate the high-resolution printable PDF file."
+      }
+    ]
+  },
+  "noiseBarrier": {
+    "badge": "THE RECRUITMENT FUNNEL",
+    "title": "The hiring noise barrier",
+    "studyIndexLabel": "📊 Recruiter study index:",
+    "studyIndexTitle": "💡 Six seconds standard response",
+    "studyIndexDescription": "That's the average timeframe a human reviewer spends on your profile before decisioning a binary path.",
+    "descriptionParagraphs": [
+      "Standing out doesn't require crazy color swirls or multi-column graphical bars. In fact, complex graphics often confuse the Applicant Tracking Systems (ATS) that crawl databases before a human ever looks at them.",
+      "What guarantees an interview callback is readability (strict visual hierarchy) combined with metrics-driven contributions.",
+      "The LunchResume formula has been coengineered to ensure your file loads cleanly into standard parser frameworks while structuring information to capture immediate attention during that critical six-second window."
+    ]
+  },
+  "manifesto": {
+    "badge": "Transparent commitment",
+    "title": "Why is LunchResume 100% free?",
+    "paragraphs": [
+      "Most \"free\" resume builders lure you in under the guise of zero costs, wait for you to spend 60 minutes typing your entire employment history, and then lock your download behind an unavoidable $19.99 monthly subscription paywall. We think that is exhausting and highly predatory for people actively seeking opportunities.",
+      "LunchResume is built differently:"
+    ],
+    "listItems": [
+      "No Hidden Credit Cards: You will never be asked for billing details to obtain your documents.",
+      "Security by default: Your personal data runs locally directly inside your browser cache. Zero servers storing your contact details.",
+      "100% Clean Code files: Produced outcomes are completely standard semantic HTML text blocks, ensuring absolute ATS compatibility."
+    ],
+    "footnote": "Supported purely by voluntary tips, community donations, and software developers contributing open-source components during their lunch hours."
+  },
+  "faqs": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Are these files ATS-friendly?",
+        "answer": "Yes, thoroughly. Most applicant tracking tools crawl raw text nodes. Our templates avoid complex floating graphics and columns that typically corrupt text flows in generic design builders, guaranteeing maximum parsing scores."
+      },
+      {
+        "question": "Where is my information stored?",
+        "answer": "Nowhere but your current device browser. We run a fully sandboxed client-side compilation model. Your inputs never touch external clouds, preventing risk of private data scraping or sales."
+      },
+      {
+        "question": "How do I download as PDF?",
+        "answer": "Click the PDF Print button on the top-right. Standard print styles configure the page into flawless, high-resolution printable grids. You can choose \"Save as PDF\" directly in your browser's print dialog!"
+      },
+      {
+        "question": "Can I write custom sections?",
+        "answer": "You can edit, add, and remove experiences or projects instantaneously. Our flexible fields allow adapting any text slot or tagging specific skills on-the-fly."
+      }
+    ]
+  }
+}

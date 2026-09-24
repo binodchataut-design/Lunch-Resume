@@ -1,0 +1,5 @@
+[
+  { "key": "classic", "label": "Elegant Top Header" },
+  { "key": "modern", "label": "Sleek Left-Border Column" },
+  { "key": "minimalist", "label": "Minimal Left Align Block" }
+]

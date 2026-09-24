@@ -1,0 +1,7 @@
+User-agent: *
+# Security: Explicitly exclude search engine web crawlers from indexing
+# the administrative workspace/owner control panel dashboard.
+Disallow: /owner
+Allow: /
+
+Sitemap: https://lunchresume.com/sitemap.xml
