@@ -196,7 +196,7 @@ export const ResumeExamplePage: React.FC = () => {
               </div>
               <button
                 onClick={() => {
-                  navigate('/resume-builder');
+                  navigate(`/resume-builder?sample=${example.slug}`);
                   window.scrollTo(0, 0);
                 }}
                 className="relative overflow-hidden group px-6 py-3 rounded-full font-sans font-bold text-[11px] tracking-wider uppercase cursor-pointer text-center transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 text-white border border-teal-500/20 shadow-[0_12px_25px_-4px_rgba(15,118,110,0.3)] bg-gradient-to-r from-teal-800 via-[#0F766E] to-emerald-700 hover:from-teal-700 hover:to-emerald-600 whitespace-nowrap z-10"

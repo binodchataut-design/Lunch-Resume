@@ -10,8 +10,8 @@
  *   - Header      : template picker, font family, font size, and color tools
  */
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Plus, Trash2, Type, Palette, Download, ChevronDown, GripVertical, ArrowLeft, Layout, Sparkles
 } from 'lucide-react';
@@ -88,6 +88,14 @@ const FONT_LABEL: Record<FontChoice, string> = {
   elegant: 'EB Garamond (Elegant)',
   mono: 'JetBrains Mono',
   space: 'Space Grotesk',
+};
+
+const FONT_FAMILY_MAP: Record<FontChoice, string> = {
+  sans: 'var(--font-sans, "Inter", ui-sans-serif, system-ui, sans-serif)',
+  serif: 'var(--font-serif, "Playfair Display", ui-serif, Georgia, serif)',
+  elegant: 'var(--font-elegant, "EB Garamond", Georgia, serif)',
+  mono: 'var(--font-mono, "JetBrains Mono", ui-monospace, monospace)',
+  space: 'var(--font-space, "Space Grotesk", sans-serif)',
 };
 
 const TEMPLATE_COMPONENTS: Record<string, React.ComponentType<any>> = {
@@ -191,12 +199,75 @@ const SectionCard: React.FC<{ title: string; children: React.ReactNode; onAdd?: 
 
 export const SimpleResumeBuilder: React.FC = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState<ResumeData>(EMPTY_DATA);
+  const [searchParams] = useSearchParams();
+
+  // Template query param initialization
+  const templateParam = searchParams.get('template');
+  const initialTemplateId =
+    templateParam && templateMetadata.some((t) => t.id === templateParam)
+      ? templateParam
+      : templateMetadata[0]?.id || 'executive-elite';
+
+  const sampleParam = searchParams.get('sample');
+  const initialSample = sampleParam
+    ? resumeExamples.find((ex) => ex.slug === sampleParam)
+    : null;
+
+  const [data, setData] = useState<ResumeData>(() => {
+    if (initialSample) {
+      const achievementsSentence =
+        initialSample.keyAchievements && initialSample.keyAchievements.length > 0
+          ? ' ' + initialSample.keyAchievements.join(' ')
+          : '';
+      const fullSummary = (initialSample.summary || '') + achievementsSentence;
+
+      const parsedExperiences: ExperienceItem[] = (initialSample.sampleExperience || []).map(
+        (expStr, idx) => {
+          const match = expStr.match(/^(.*?)\s+at\s+(.*?)\s*\((.*?)\):\s*([\s\S]*)$/);
+          if (match) {
+            return {
+              id: uid(`exp-sample-${idx}`),
+              role: match[1].trim(),
+              company: match[2].trim(),
+              period: match[3].trim(),
+              description: match[4].trim(),
+            };
+          }
+          return {
+            id: uid(`exp-sample-${idx}`),
+            role: '',
+            company: '',
+            period: '',
+            description: expStr.trim(),
+          };
+        }
+      );
+
+      return {
+        ...EMPTY_DATA,
+        personalInfo: {
+          ...EMPTY_DATA.personalInfo,
+          title: initialSample.jobTitle,
+        },
+        summary: fullSummary,
+        experiences: parsedExperiences,
+        skills: [...initialSample.sampleSkills],
+      };
+    }
+    return EMPTY_DATA;
+  });
+
   const [design, setDesign] = useState<DesignConfig>(DEFAULT_DESIGN);
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string>(
-    templateMetadata[0]?.id || 'executive-elite'
-  );
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>(initialTemplateId);
   const [skillInput, setSkillInput] = useState('');
+
+  // Sync template if query param changes
+  useEffect(() => {
+    const tParam = searchParams.get('template');
+    if (tParam && templateMetadata.some((t) => t.id === tParam)) {
+      setSelectedTemplateId(tParam);
+    }
+  }, [searchParams]);
 
   // --- personal info -------------------------------------------------------
   const setPersonal = (field: keyof ResumeData['personalInfo'], value: string) =>
@@ -253,17 +324,7 @@ export const SimpleResumeBuilder: React.FC = () => {
     setDesign((prev) => ({ ...prev, [field]: value }));
 
   // --- sample resume loader ------------------------------------------------
-  const handleLoadSample = (sample: typeof resumeExamples[0]) => {
-    const hasExistingContent = Boolean(
-      data.summary.trim() || data.experiences.length > 0
-    );
-    if (hasExistingContent) {
-      const confirmed = window.confirm(
-        'Loading this sample resume will overwrite your current summary, work experiences, and skills. Do you want to continue?'
-      );
-      if (!confirmed) return;
-    }
-
+  const applySampleContent = (sample: typeof resumeExamples[0]) => {
     const achievementsSentence =
       sample.keyAchievements && sample.keyAchievements.length > 0
         ? ' ' + sample.keyAchievements.join(' ')
@@ -303,6 +364,30 @@ export const SimpleResumeBuilder: React.FC = () => {
       skills: [...sample.sampleSkills],
     }));
   };
+
+  const handleLoadSample = (sample: typeof resumeExamples[0]) => {
+    const hasExistingContent = Boolean(
+      data.summary.trim() || data.experiences.length > 0
+    );
+    if (hasExistingContent) {
+      const confirmed = window.confirm(
+        'Loading this sample resume will overwrite your current summary, work experiences, and skills. Do you want to continue?'
+      );
+      if (!confirmed) return;
+    }
+    applySampleContent(sample);
+  };
+
+  // Sample query param on mount: load without confirm dialog
+  useEffect(() => {
+    const sampleParam = searchParams.get('sample');
+    if (sampleParam) {
+      const foundSample = resumeExamples.find((ex) => ex.slug === sampleParam);
+      if (foundSample) {
+        applySampleContent(foundSample);
+      }
+    }
+  }, []);
 
   // --- mapped data & design for template components ------------------------
   const p = data.personalInfo;
@@ -680,9 +765,28 @@ export const SimpleResumeBuilder: React.FC = () => {
           <div
             id="physical-page-print"
             className={`${FONT_CLASS[design.font]} bg-white shadow-lg`}
-            style={{ fontSize: `${design.fontSize}px`, color: design.textColor }}
+            style={{
+              fontFamily: FONT_FAMILY_MAP[design.font],
+              fontSize: `${design.fontSize}px`,
+              color: design.textColor,
+            }}
           >
-            <TemplateRenderer data={mappedData} design={mappedDesign} />
+            <div
+              className="resume-template-container w-full h-full"
+              style={{
+                fontFamily: FONT_FAMILY_MAP[design.font],
+                fontSize: `${design.fontSize}px`,
+                color: design.textColor,
+                ['--font-sans' as any]: FONT_FAMILY_MAP[design.font],
+                ['--font-serif' as any]: FONT_FAMILY_MAP[design.font],
+              }}
+            >
+              <TemplateRenderer
+                data={mappedData}
+                design={mappedDesign}
+                className={FONT_CLASS[design.font]}
+              />
+            </div>
           </div>
         </div>
       </div>
