@@ -771,6 +771,16 @@ export const SimpleResumeBuilder: React.FC = () => {
               color: design.textColor,
             }}
           >
+            {/* Scoped font-size scaling for template preview */}
+            <style>{`
+              #physical-page-print .text-xs  { font-size: calc(0.75rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(1rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-sm  { font-size: calc(0.875rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(1.25rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-base{ font-size: calc(1rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(1.5rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-lg  { font-size: calc(1.125rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(1.75rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-xl  { font-size: calc(1.25rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(1.75rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-2xl { font-size: calc(1.5rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(2rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+              #physical-page-print .text-3xl { font-size: calc(1.875rem * ${(design.fontSize / 11).toFixed(4)}) !important; line-height: calc(2.25rem * ${(design.fontSize / 11).toFixed(4)}) !important; }
+            `}</style>
             <div
               className="resume-template-container w-full h-full"
               style={{
